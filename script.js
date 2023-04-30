@@ -4,7 +4,7 @@ var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var lower = "abcdefghijklmnopqrstuvwxyz"
 var symbols = "!@#$%^&*()-=+<>?/|':[]{}"
 var nums = "0123456789"
-var multiSelect = ""
+password = ""
 
 // Write password to the #password input
 function writePassword() {
@@ -18,20 +18,18 @@ function writePassword() {
     }
     var upperCase = confirm("Would you like to use uppercase? 'ok' for yes and 'cancel' for no");
     var lowerCase = confirm("How about we add some lowercase in there? 'ok' for yes and 'cancel' for no");
-    var specials = confirm("Lets get crazy with the special characters shall we? 'ok' for yes and 'cancel' for no");
+    var symbols = confirm("Lets get crazy with the special characters shall we? 'ok' for yes and 'cancel' for no");
     var numbers = confirm("Finally, lets add some numbers? 'ok' for yes and 'cancel' for no");
+
+    if (upperCase == true) { passwordText += upperCase }
+    if (lowerCase == true) { passwordText += upperCase }
+    if (numbers == true) { passwordText += nums }
+    if (symbols == true) { passwordText += symbols }
   }
-  if (upperCase == true) { multiSelect += upper; }
-  if (lowerCase == true) { multiSelect += lower; }
-  if (numbers == true) { multiSelect += nums; }
-  if (specials == true) { multiSelect += symbols; }
 }
-    password += multiSelect[Math.floor(Math.random() * multiSelect.length)]
 function generatePassword() {
   passwordText.value = password;
 }
-
-
 
 
 // Add event listener to generate button
