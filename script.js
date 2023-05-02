@@ -1,33 +1,36 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lower = "abcdefghijklmnopqrstuvwxyz";
-const symbols = "!@#$%^&*()-=+<>?/|':[]{}";
-const numbers = "0123456789";
-var passWord = "";
+const upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const symbols = ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", ",", "|", ":", ";", "<", ">", ".", "?", "/"];
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let passWord = "";
+let bucket = [];
 
 function generatePassword() {
-    console.log("button clicked")
-    var passLength = prompt("How many characters would you like you password to use?");
-    if (passLength < 8 || passLength > 128) {
-      alert("Must be between 8 and 128 characters in length. Please try again");
-      return;
-    }
-    var upperCase = confirm("Would you like to use uppercase? 'ok' for yes");
-    var lowerCase = confirm("How about we add some lowercase in there? 'ok' for yes");
-    var symbols = confirm("Lets get crazy with the special characters shall we? 'ok' for yes");
-    var numbers = confirm("Finally, lets add some numbers? 'ok' for yes");
 
-    if (upperCase === true) { passWord += upperCase };
-    if (lowerCase === true) { passWord += lowerCase };
-    if (numbers === true) { passWord += numbers };
-    if (symbols === true) { passWord += symbols };   
-/*
-2. validate the input.
-3. display the pasword on the page.
-*/
+  var passLength = prompt("How many characters would you like you password to use?");
+  if (passLength < 8 || passLength > 128) {
+    alert("Must be between 8 and 128 characters in length. Please try again");
+    return;
+  }
+  var userUpperCase = confirm("Would you like to use uppercase? 'ok' for yes");
 
-    return passWord;
+  var userLowerCase = confirm("How about we add some lowercase in there? 'ok' for yes");
+  var userSymbols = confirm("Lets get crazy with the special characters shall we? 'ok' for yes");
+  var UserNumbers = confirm("Finally, lets add some numbers? 'ok' for yes");
+
+  if (userUpperCase === true) { bucket = bucket.concat(upperCase) };
+  if (userLowerCase === true) { bucket = bucket.concat(lowerCase) };
+  if (userSymbols === true) { bucket = bucket.concat(symbols) };
+  if (UserNumbers === true) { bucket = bucket.concat(numbers) };
+
+  for (var i = 0; i < passLength; i++) {
+    var randomIndex = Math.floor(Math.random() * bucket.length);
+    passWord = passWord + bucket[randomIndex];
+  }
+
+  return passWord;
 }
 
 // Write password to the #password input
@@ -36,7 +39,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
