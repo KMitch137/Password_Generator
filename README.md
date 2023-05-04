@@ -5,3 +5,4 @@ Please feel free to use it as well!
 Click here to generate your own password:   https://kmitch137.github.io/Password_Generator/
 
 
+![Password Generator Screen Shot](https://user-images.githubusercontent.com/124840930/236351532-df11d4e3-196d-4593-96cc-fc7fd251ddb6.png)
