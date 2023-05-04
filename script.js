@@ -24,6 +24,10 @@ function generatePassword() {
   if (userLowerCase === true) { bucket = bucket.concat(lowerCase) };
   if (userSymbols === true) { bucket = bucket.concat(symbols) };
   if (UserNumbers === true) { bucket = bucket.concat(numbers) };
+  if (userLowerCase + userLowerCase + userSymbols + UserNumbers === 0) {
+    alert("Please choose at least one option!");
+    return;
+  }
 
   for (var i = 0; i < passLength; i++) {
     var randomIndex = Math.floor(Math.random() * bucket.length);
