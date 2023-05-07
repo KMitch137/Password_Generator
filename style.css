@@ -135,3 +135,7 @@ button[disabled] {
     font-size: 0.8rem;
   }
 }
+
+#copy {
+  background-color: rgb(201, 235, 51);
+}
