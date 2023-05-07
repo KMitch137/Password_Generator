@@ -8,8 +8,10 @@ let passWord = "";
 let bucket = [];
 
 function generatePassword() {
+  passWord = "";
+  bucket = [];
 
-  var passLength = prompt("How many characters would you like you password to use?");
+  var passLength = prompt("How long would you like your password to be? You can choose between 8 and 128 characters.");
   if (passLength < 8 || passLength > 128) {
     alert("Must be between 8 and 128 characters in length. Please try again");
     return;
@@ -24,7 +26,7 @@ function generatePassword() {
   if (userLowerCase === true) { bucket = bucket.concat(lowerCase) };
   if (userSymbols === true) { bucket = bucket.concat(symbols) };
   if (UserNumbers === true) { bucket = bucket.concat(numbers) };
-  if (userLowerCase + userLowerCase + userSymbols + UserNumbers === 0) {
+  if (userLowerCase + userUpperCase + userSymbols + UserNumbers === 0) {
     alert("Please choose at least one option!");
     return;
   }
@@ -35,6 +37,14 @@ function generatePassword() {
   }
 
   return passWord;
+}
+
+function myFunction() {
+  var copyText = document.getElementById("password");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+  navigator.clipboard.writeText(copyText.value);
+  alert("Copied the text: " + copyText.value);
 }
 
 // Write password to the #password input
